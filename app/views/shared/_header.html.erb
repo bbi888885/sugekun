@@ -1,24 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <img class="clock1" src="https://img.icons8.com/material/24/ffffff/retro-alarm-clock.png"/>
-    <%= link_to "CLOCK", root_path, class:"navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "About 10000 hour-rule", home_about_path, class:"nav-link active" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Theme", root_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Add Theme", root_path, class:"nav-link" %>
-        </li>
+<header>  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <img class="clock1" src="https://img.icons8.com/material/24/ffffff/retro-alarm-clock.png"/>
+      <%= link_to "CLOCK", root_path, class:"navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "About 10000 hour-rule", home_about_path, class:"nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Progress", root_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Add Task", themes_path, class:"nav-link" %>
+          </li>
+          
+        </ul>
         
-      </ul>
-      
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

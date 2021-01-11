@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+header {
+  position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+    height: 140px;              /* 縦幅140px */
+}
+
+
+.table1 {
+  width: 80%;
+  margin-left:auto; 
+margin-right:auto;
+}

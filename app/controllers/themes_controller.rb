@@ -6,6 +6,7 @@ class ThemesController < ApplicationController
   def create
     theme = Theme.create(theme_params)
     redirect_to themes_path
+    
   end
 
   private

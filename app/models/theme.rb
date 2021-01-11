@@ -5,4 +5,6 @@ class Theme < ApplicationRecord
   require "date"
   require "time"
 
+  validates :theme, presence: true
+
 end

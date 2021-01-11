@@ -1,11 +1,13 @@
 <div class="cp_iptxt">
-  <%= form_with url: themes_path, method: :post do |f| %>
-    <%= f.text_field :title, class:"title", placeholder:"Pleaes insert the task you would like to study today." %>
-    <%= f.submit "ADD", class:"btn btn-secondary title-sent" %>
+  <%= form_with url: themes_path, method: :post, local: true do |f| %>
+    <%= f.text_field :title, class:"title", placeholder:"Pleaes insert the task you would like to study :)" %>
+    <%= f.submit "ADD", class:"btnn btn btn-secondary title-sent" %>
   <% end %>
 </div>
 
-
+<% if @themes.empty? %>
+  <p></p>
+<% else %>  
   <table class="table table-striped table-hover table-bordered table1 caption-top">
   <caption>Studying Record</caption>
     <thead class="table-dark">
@@ -31,8 +33,8 @@
               <%= theme.start_time.created_at.strftime('%H:%M') %>
             <% end %>
             <% if theme.start_time == nil %>
-              <%= form_with url: theme_start_times_path(theme_id: theme.id), method: :post do |f| %>
-                <%= f.submit "開始", class:"btn btn-success" %>
+              <%= form_with url: theme_start_times_path(theme_id: theme.id), method: :post, local: true do |f| %>
+                <%= f.submit "START", class:"btn-success" %>
               <% end %>
             <% end %>
           </td>
@@ -41,8 +43,8 @@
               <%= theme.stop_time.created_at.strftime('%H:%M') %>
             <% end %>
             <% if theme.start_time != nil && theme.stop_time == nil %>
-              <%= form_with url: theme_stop_times_path(theme_id: theme.id), method: :post do |f| %>
-                <%= f.submit "終了", class:"btn btn-danger" %>
+              <%= form_with url: theme_stop_times_path(theme_id: theme.id), method: :post, local: true do |f| %>
+                <%= f.submit "STOP", class:"btn-danger" %>
               <% end %>
             <% end %>
           </td>
@@ -59,5 +61,6 @@
       <% end %>
     </tbody>
   </table>
+<% end %>
 
 

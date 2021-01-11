@@ -352,6 +352,9 @@ footer {
 		About
 --------------------------*/
 
+.body {
+
+}
 
 .about-title { 
   padding: 180px 0px 0px 10px;
@@ -368,7 +371,6 @@ footer {
   font-weight: 300; 
   color: #ffcc66; 
   margin: 0 0 24px; 
-  padding: 0px 180px 0px 10px;
   text-align: center;
 }
 
@@ -378,7 +380,7 @@ footer {
   font-family: 'Source Sans Pro', sans-serif; 
   font-size: 14px; 
   line-height: 32px; 
-  padding: 0px 100px;
+  padding: 0px 20%;
   margin: 0 0 24px; 
   text-align: center;
 }
@@ -392,13 +394,6 @@ footer {
 .text1:hover { 
   color: #ffcc66 
 }
-
-$base: #0f1923;
-$white: #ece8e1;
-$pink: #ff4655;
-$height: 54px;
-$transition: 0.3s ease-out all;
-
 
 /*-------------------------
 		Start-learning

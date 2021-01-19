@@ -6,6 +6,6 @@ class SubjectsController < ApplicationController
 
   private
   def subject_params
-    params.permit(:theme_id)
+    params.permit(:theme_id, :topic)
   end
 end

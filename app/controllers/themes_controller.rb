@@ -13,8 +13,8 @@ class ThemesController < ApplicationController
   end
 
   def show
-    @themes = Theme.where(id: params[:id])
-
+    @theme = Theme.where(id: params[:id])
+    
   end
 
   def progress

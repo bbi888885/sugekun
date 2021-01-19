@@ -1,5 +1,5 @@
 class Subject < ApplicationRecord
   belongs_to :theme
   
-  validates :name, presence: true
+  validates :topic, presence: true
 end

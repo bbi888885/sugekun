@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_01_19_080356) do
   end
 
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "name"
+    t.string "topic"
     t.bigint "theme_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

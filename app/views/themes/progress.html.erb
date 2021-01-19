@@ -1,0 +1,28 @@
+
+<% if @themes.empty? %>
+<div class="task-wrapper">
+  <%= link_to "Add New Task", new_theme_path, method: :get, class:"btn btn-secondary btn-lg" %>
+</div>
+<% else %>
+<h1>My Progress</h1>
+<table class="table table-striped table-hover table-bordered table1 caption-top">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name of Task</th>
+      <th scope="col">Studying Hour in Total</th>
+      <th scope="col">How Many Hour Study to Become Master</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @themes.pluck(:title).uniq.each do |t| %>
+    <tr>
+      <th scope="row"><%= t %></th>
+      <td>
+        <%= %>
+      </td>
+      <td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>

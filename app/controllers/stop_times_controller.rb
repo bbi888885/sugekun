@@ -1,7 +1,7 @@
 class StopTimesController < ApplicationController
   def create
-    StopTime.create(stop_time_params)
-    redirect_to themes_path
+    stop = StopTime.create(stop_time_params)
+    redirect_to theme_path(stop.theme_id)
   end
 
   private

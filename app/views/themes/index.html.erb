@@ -1,66 +1,11 @@
-<div class="cp_iptxt">
-  <%= form_with url: themes_path, method: :post, local: true do |f| %>
-    <%= f.text_field :title, class:"title", placeholder:"Pleaes insert the task you would like to study :)" %>
-    <%= f.submit "ADD", class:"btnn btn btn-secondary title-sent" %>
-  <% end %>
-</div>
 
+<div class="task-wrapper">
 <% if @themes.empty? %>
-  <p></p>
-<% else %>  
-  <table class="table table-striped table-hover table-bordered table1 caption-top">
-  <caption>Studying Record</caption>
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Task</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">Stop Time</th>
-        <th scope="col">Studying Hour</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @themes.each do |theme| %>
-        <tr>
-          <th scope="row">
-            <% if theme != nil %>
-              <%= theme.created_at.to_date.to_formatted_s(:long) %>
-            <% end %>
-          </th>
-          <td><%= theme.title %></td>
-          <td>
-            <% if theme.start_time != nil %>
-              <%= theme.start_time.created_at.strftime('%H:%M') %>
-            <% end %>
-            <% if theme.start_time == nil %>
-              <%= form_with url: theme_start_times_path(theme_id: theme.id), method: :post, local: true do |f| %>
-                <%= f.submit "START", class:"btn-success" %>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if theme.stop_time != nil %>
-              <%= theme.stop_time.created_at.strftime('%H:%M') %>
-            <% end %>
-            <% if theme.start_time != nil && theme.stop_time == nil %>
-              <%= form_with url: theme_stop_times_path(theme_id: theme.id), method: :post, local: true do |f| %>
-                <%= f.submit "STOP", class:"btn-danger" %>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if theme.start_time && theme.stop_time != nil %>
-            <% study_end = DateTime.parse(theme.stop_time.created_at.strftime('%H:%M')) %>
-            <% study_start = DateTime.parse(theme.start_time.created_at.strftime('%H:%M')) %>
-            <% study_sec = (study_end.to_f - study_start.to_f) %>
-            <% study_hour = study_sec / 3600 %>
-            <%= study_hour.floor(2) %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= link_to "Add New Task", new_theme_path, method: :get, class:"btn btn-secondary btn-lg" %>
+<% else %>
+  <% @themes.each do |theme| %>
+    <%= link_to theme.title, theme_path(theme.id), method: :get, class:"btn btn-secondary btn-lg" %>
+  <% end %>
 <% end %>
-
+</div>
 

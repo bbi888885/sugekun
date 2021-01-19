@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_052623) do
+ActiveRecord::Schema.define(version: 2021_01_19_080356) do
 
   create_table "start_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "theme_id"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2021_01_11_052623) do
     t.index ["theme_id"], name: "index_stop_times_on_theme_id"
   end
 
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "name"
+    t.bigint "theme_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["theme_id"], name: "index_subjects_on_theme_id"
+  end
+
   create_table "themes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -34,4 +42,5 @@ ActiveRecord::Schema.define(version: 2021_01_11_052623) do
 
   add_foreign_key "start_times", "themes"
   add_foreign_key "stop_times", "themes"
+  add_foreign_key "subjects", "themes"
 end

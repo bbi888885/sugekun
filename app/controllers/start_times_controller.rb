@@ -1,8 +1,8 @@
 class StartTimesController < ApplicationController
   
   def create
-    StartTime.create(start_time_params)
-    redirect_to themes_path
+    start = StartTime.create(start_time_params)
+    redirect_to theme_path(start.theme_id)
   end
 
   private

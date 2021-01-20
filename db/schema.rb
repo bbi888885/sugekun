@@ -12,23 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2021_01_19_080356) do
 
-  create_table "start_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "theme_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["theme_id"], name: "index_start_times_on_theme_id"
-  end
-
-  create_table "stop_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "theme_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["theme_id"], name: "index_stop_times_on_theme_id"
-  end
-
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "topic"
     t.bigint "theme_id"
+    t.datetime "start_time"
+    t.datetime "stop_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["theme_id"], name: "index_subjects_on_theme_id"
@@ -40,7 +28,5 @@ ActiveRecord::Schema.define(version: 2021_01_19_080356) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "start_times", "themes"
-  add_foreign_key "stop_times", "themes"
   add_foreign_key "subjects", "themes"
 end

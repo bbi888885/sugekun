@@ -30,7 +30,7 @@ header {
 }
 
 body {
-  margin-top: 100px;
+  margin-top: 90px;
 }
 
 li {
@@ -44,4 +44,14 @@ li {
 
 .card {
   margin: 0 20%;
+}
+
+.account {
+  display: flex;
+}
+
+.account li {
+  margin-right: 5px;
+  justify-content: center;
+  
 }

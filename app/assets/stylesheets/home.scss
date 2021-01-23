@@ -16,10 +16,11 @@
 --------------------------*/
 
 .top-page-date {
-  margin-top: 80px;
-  text-align: center;
-  margin-bottom: -80px;
-  font-size: 75px;
+  margin-top: 10px;
+	text-align: center;
+	margin-top: 30px;
+  margin-bottom: -100px;
+  font-size: 30px;
 }
 
 /*-------------------------
@@ -501,3 +502,21 @@ footer {
 	margin: 10px auto;
 }
 
+h1 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+h1:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  display: inline-block;
+  width: 60px;
+  height: 5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: black;
+  border-radius: 2px;
+}

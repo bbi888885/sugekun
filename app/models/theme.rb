@@ -2,6 +2,7 @@ class Theme < ApplicationRecord
   has_one :start_time
   has_one :stop_time
   has_many :subjects
+  belongs_to :user
   accepts_nested_attributes_for :subjects
 
   require "date"

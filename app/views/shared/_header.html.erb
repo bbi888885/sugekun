@@ -1,5 +1,5 @@
 <header>  
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container-fluid">
       <%= link_to image_tag("https://img.icons8.com/material/24/ffffff/retro-alarm-clock.png"), root_path, class:"clock1" %>
       <%= link_to "CLOCK", root_path, class:"navbar-brand" %>
@@ -11,17 +11,40 @@
           <li class="nav-item">
             <%= link_to "About 10000 hour-rule", home_about_path, class:"nav-link active" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "My Progress", themes_progress_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My Task", themes_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Add New Task", new_theme_path, class:"nav-link" %>
-          </li>
-          
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "My Progress", themes_progress_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "My Task", themes_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Add New Task", new_theme_path, class:"nav-link" %>
+            </li>
+          <% end %>
         </ul>
+          <% if user_signed_in? %>
+            <div class="account d-flex justify-content-end">
+              <li class="nav-item">
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link btn btn-outline-light" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Edit Profile", edit_user_registration_path, class:"nav-link btn btn-outline-light" %>
+              </li>
+            </div>
+          <% else %>
+            <div class="account d-flex justify-content-end">
+              <li class="nav-item">
+                <%= link_to "Sign Up", new_user_registration_path, class:"nav-link btn btn-outline-light" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Log In", new_user_session_path, class:"nav-link btn btn-outline-light" %>
+              </li>
+            </div>
+          <% end %>
+          
+          
+        
         
       </div>
     </div>

@@ -26,6 +26,6 @@ class ThemesController < ApplicationController
 
   private
   def theme_params
-    params.require(:theme).permit(:title)
+    params.require(:theme).permit(:title).merge(user_id: current_user.id)
   end
 end

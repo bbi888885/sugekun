@@ -14,20 +14,18 @@ class ThemesController < ApplicationController
 
   def show
     @theme = Theme.where(id: params[:id])
+    
   end
 
   def progress
     @themes = Theme.all
-
+    @start_times = Subject.group(:theme_id).sum(:start_time)
+    @stop_times = Subject.group(:theme_id).sum(:stop_time)
 
   end
 
   private
   def theme_params
     params.require(:theme).permit(:title)
-  end
-
-  def subject_params
-    params.permit(:topic, :theme_id,:start_time, :stop_time)
   end
 end

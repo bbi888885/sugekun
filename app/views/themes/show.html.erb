@@ -28,7 +28,7 @@
           <td><%= t.topic%></td>
           <td>
             <% if t.start_time != nil %>
-              <%= t.start_time.strftime('%H:%M') %>
+              <%= Time.at(t.start_time).strftime('%H:%M') %>
             <% end %>
             <% if t.start_time == nil %>
               <%= form_with url: theme_subject_path(theme_id: theme.id, id: t.id), method: :patch, local: true do |f| %>
@@ -38,7 +38,7 @@
           </td>
           <td>
             <% if t.stop_time != nil %>
-              <%= t.stop_time.strftime('%H:%M') %>
+              <%= Time.at(t.stop_time).strftime('%H:%M') %>
             <% end %>
             <% if t.start_time != nil && t.stop_time == nil %>
               <%= form_with url: theme_subject_path(theme_id: theme.id, id: t.id), method: :patch, local: true do |f| %>

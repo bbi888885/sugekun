@@ -1,28 +1,50 @@
 
 <% if @themes.empty? %>
-<div class="task-wrapper">
-  <%= link_to "Add New Task", new_theme_path, method: :get, class:"btn btn-secondary btn-lg" %>
-</div>
+  <div class="task-wrapper">
+    <%= link_to "Add New Task", new_theme_path, method: :get, class:"btn btn-secondary btn-lg" %>
+  </div>
 <% else %>
-<h1>My Progress</h1>
-<table class="table table-striped table-hover table-bordered table1 caption-top">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">Name of Task</th>
-      <th scope="col">Studying Hour in Total</th>
-      <th scope="col">How Many Hour Study to Become Master</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @themes.pluck(:title).uniq.each do |t| %>
-    <tr>
-      <th scope="row"><%= t %></th>
-      <td>
-        <%= %>
-      </td>
-      <td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <h1>My Progress</h1>
+  <table class="table table-striped table-bordered table1 caption-top shadow-lg p-3 mb-5 bg-white rounded">
+  <caption>Overview</caption>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name of Task</th>
+        <th scope="col">Studying Hour in Total</th>
+        <th scope="col">How Many Hour Study to Become Master</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @themes.each do |theme| %>
+        <tr>
+          <th scope="row" rowspan="2"><%= theme.title %></th>
+          <td>
+                <% start_time = @start_times.fetch(theme.id, 0) %>
+                <% stop_time = @stop_times.fetch(theme.id, 0) %>
+                <% study_sec = stop_time.to_f - start_time.to_f %>
+                <% @study_hour = study_sec / 3600 %>
+                <%= @study_hour.floor(2) %>
+            </td>
+          <td>
+            <% @howmanyhourleft = (10000 - @study_hour).floor(2) %>
+              <% if @howmanyhourleft < 0 %>
+                <p> Congrets! You have becomne the master of <%= theme.title %> </p>
+              <% else %>
+                <%= @howmanyhourleft %>
+              <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <% @precentage = @study_hour/100 %>
+            <%= @precentage.floor(1) %>%
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" 
+                   style="width: <%= @precentage %>%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

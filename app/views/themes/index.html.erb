@@ -4,7 +4,7 @@
   <%= link_to "Add New Task", new_theme_path, method: :get, class:"btn btn-secondary btn-lg" %>
 <% else %>
   <% @themes.each do |theme| %>
-    <%= link_to theme.title, theme_path(theme.id), method: :get, class:"btn btn-secondary btn-lg" %>
+    <%= link_to theme.title, theme_path(theme.id), method: :get, class:"btn btn-secondary btn-lg " %>
   <% end %>
 <% end %>
 </div>

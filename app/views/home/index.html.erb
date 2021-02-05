@@ -1,5 +1,8 @@
-<h1>Hello! <%= current_user.name %> <br>Welcome to CLOCK! Let's start today's learning!</h1>
-
+<% if user_signed_in? %>
+	<h1>Hello! <%= current_user.name %> <br>Welcome to CLOCK! Let's start today's learning!</h1>
+<% else %>
+	<h1>Welcome to CLOCK!</h1>
+<% end %>
 
 <!-- Date -->
 
